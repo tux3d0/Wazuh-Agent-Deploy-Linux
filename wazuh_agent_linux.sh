@@ -9,7 +9,8 @@ sudo echo "deb [signed-by=/usr/share/keyrings/wazuh.gpg] https://packages.wazuh.
 echo "Updating the package lists"
 sudo apt-get update
 echo "Installing the Wazuh agent"
-WAZUH_MANAGER="192.168.1.110" sudo apt-get install wazuh-agent -y
+read -p "Enter the Wazuh manager/server IP: " server_ip
+WAZUH_MANAGER="$server_ip" sudo apt-get install wazuh-agent -y
 echo "Starting the Wazuh agent"
 sudo systemctl daemon-reload
 sudo systemctl enable wazuh-agent
